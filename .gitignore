@@ -1,0 +1,9 @@
+# Real data
+data/
+
+# Python virtual environment
+.venv/
+
+# Python and Jupyter cache files
+__pycache__/
+.ipynb_checkpoints/
