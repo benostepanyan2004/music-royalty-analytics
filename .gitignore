@@ -7,3 +7,6 @@ data/
 # Python and Jupyter cache files
 __pycache__/
 .ipynb_checkpoints/
+
+# Private working notes
+CLAUDE.md
