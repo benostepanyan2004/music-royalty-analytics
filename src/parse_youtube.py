@@ -9,8 +9,8 @@ for file_name in files:
     if file_name.startswith("~$"):
         continue
     df = pd.read_excel(f"data/raw/youtube/{file_name}", sheet_name="cid_audio")
-    df = df[["Artist", "Album", "Revenue", "Video URL", "Payment type"]]
-    df.columns = ["artist", "track", "revenue", "video_url", "payment_type"]
+    df = df[["Artist", "Album", "ISRC", "UPC", "Revenue", "Video URL", "Payment type"]]
+    df.columns = ["artist", "track", "isrc", "upc", "revenue", "video_url", "payment_type"]
     df["report_month"] = pd.to_datetime(file_name[:7], format="%m-%Y")
     tables.append(df)
 

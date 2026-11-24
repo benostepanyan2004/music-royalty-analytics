@@ -9,10 +9,10 @@ for file_name in files:
         continue
     df = pd.read_excel(f"data/raw/dsp/{file_name}", sheet_name=0)
     if "DSP" in df.columns:
-        df = df[["Product Artist", "Product Title", "DSP", "Territory", "Pay"]]
+        df = df[["Product Artist", "Product Title", "Asset ISRC", "Product UPC", "DSP", "Territory", "Pay"]]
     else:
-        df = df[["Artist", "Track Title", "Store", "Territory", "Revenue, USD"]]
-    df.columns = ["artist", "track", "platform", "country", "revenue"]
+        df = df[["Artist", "Track Title", "ISRC", "UPC", "Store", "Territory", "Revenue, USD"]]
+    df.columns = ["artist", "track", "isrc", "upc", "platform", "country", "revenue"]
     df["report_month"] = pd.to_datetime(file_name[:7], format="%m-%Y")
     tables.append(df)
 
