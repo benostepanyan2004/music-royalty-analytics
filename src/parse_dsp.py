@@ -13,7 +13,7 @@ expected_revenue = 0
 for file_name in files:
     if file_name.startswith("~$"):
         continue
-    df = pd.read_excel(f"data/raw/dsp/{file_name}", sheet_name=0)
+    df = pd.read_excel(f"data/raw/dsp/{file_name}", sheet_name=0, keep_default_na=False, na_values=[""])
 
     files_read += 1
     expected_rows += len(df)
@@ -35,8 +35,7 @@ result.sort_values("report_month").to_csv("data/interim/dsp.csv", index=False)
 
 all_months = pd.date_range(min(months), max(months), freq="MS")
 
-# Read the saved file back and compare it with the source files
-check = pd.read_csv("data/interim/dsp.csv")
+check = pd.read_csv("data/interim/dsp.csv", keep_default_na=False, na_values=[""])
 assert len(months) == len(set(months)), "two reports for the same month"
 assert files_read == len(all_months), "a month is missing between the first and the last report"
 assert len(check) == expected_rows, "row count does not match the source files"
